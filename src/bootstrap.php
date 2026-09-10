@@ -3,7 +3,9 @@
 declare(strict_types=1);
 
 define('ROOT_PATH', dirname(__DIR__));
-define('PUBLIC_PATH', ROOT_PATH . '/public');
+if (!defined('PUBLIC_PATH')) {
+    define('PUBLIC_PATH', ROOT_PATH . '/public');
+}
 define('SRC_PATH', ROOT_PATH . '/src');
 
 require_once SRC_PATH . '/config.php';
@@ -13,7 +15,7 @@ require_once SRC_PATH . '/auth.php';
 require_once SRC_PATH . '/views/site.php';
 require_once SRC_PATH . '/views/admin.php';
 
-if (session_status() !== PHP_SESSION_ACTIVE) {
+if (getenv('STATIC_BUILD') !== '1' && session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
 

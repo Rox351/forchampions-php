@@ -2,7 +2,19 @@
 
 Reconstrução do site **forchampions.com.br** em PHP puro, com compra via WhatsApp e painel admin.
 
-## Demo rápida (Docker)
+## Demo online (GitHub Pages)
+
+**https://rox351.github.io/forchampions-php/**
+
+Versão estática para apresentação à empresa (sem PHP/MySQL). Inclui homepage, loja, produtos, páginas institucionais e FAQ.
+
+Para regenerar a demo estática:
+
+```powershell
+docker exec -e STATIC_BASE=/forchampions-php fc-php-web php /var/www/html/scripts/build-github-pages.php
+```
+
+## Demo completa (Docker + PHP)
 
 ```powershell
 git clone https://github.com/Rox351/forchampions-php.git
@@ -29,10 +41,11 @@ docker compose up -d --build
 
 ```
 forchampions-php/
-├── public/          # Site e assets
-├── src/             # PHP (bootstrap, views, helpers)
+├── docs/            # Demo estatica (GitHub Pages)
+├── public/          # Site PHP
+├── src/             # Bootstrap, helpers, views
 ├── database/        # Schema inicial
-└── docker/          # Apache
+└── scripts/         # Build da demo e importacao local
 ```
 
 ## Comandos úteis

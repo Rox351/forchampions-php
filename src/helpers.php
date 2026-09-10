@@ -16,7 +16,35 @@ function baseUrl(string $path = ''): string
 {
     $base = appConfig()['app']['url'];
     $path = ltrim($path, '/');
+
+    if (getenv('STATIC_BUILD') === '1') {
+        return staticBuildUrl($base, $path);
+    }
+
     return $path === '' ? $base : $base . '/' . $path;
+}
+
+function staticBuildUrl(string $base, string $path): string
+{
+    if ($path === '') {
+        return $base . '/';
+    }
+
+    if (preg_match('/^loja\.php(?:\?(.*))?$/', $path, $matches)) {
+        return isset($matches[1]) && $matches[1] !== ''
+            ? $base . '/loja.html?' . $matches[1]
+            : $base . '/loja.html';
+    }
+
+    if (preg_match('/^produto\.php\?slug=([^&#]+)/', $path, $matches)) {
+        return $base . '/produto/' . rawurlencode(rawurldecode($matches[1])) . '.html';
+    }
+
+    if (preg_match('/^pagina\.php\?slug=([^&#]+)/', $path, $matches)) {
+        return $base . '/pagina/' . rawurlencode(rawurldecode($matches[1])) . '.html';
+    }
+
+    return $base . '/' . $path;
 }
 
 function assetUrl(string $path): string

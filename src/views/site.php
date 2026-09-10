@@ -18,7 +18,7 @@ function renderHeader(string $title, array $settings, string $active = ''): void
     <meta name="description" content="Uniformes e roupas esportivas personalizadas. Compre pelo WhatsApp.">
     <link rel="stylesheet" href="<?= assetUrl('assets/css/style.css') ?>">
 </head>
-<body>
+<body<?= getenv('STATIC_BUILD') === '1' ? ' data-static-demo="1"' : '' ?>>
 <header class="site-header">
     <div class="container header-inner">
         <a href="<?= baseUrl() ?>" class="logo">

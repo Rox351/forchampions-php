@@ -17,12 +17,12 @@ renderHeader('Loja', $settings, 'loja');
     <div class="container">
         <div class="section-head">
             <h1>Loja</h1>
-            <p><?= count($products) ?> produto(s) encontrado(s)</p>
+            <p><span data-shop-count><?= count($products) ?> produto(s) encontrado(s)</span></p>
         </div>
 
         <div class="shop-filters">
             <form class="shop-search" action="<?= baseUrl('loja.php') ?>" method="get">
-                <input type="search" name="q" value="<?= e($search) ?>" placeholder="Procurar Produtos...">
+                <input type="search" name="q" value="<?= e($search) ?>" placeholder="Procurar Produtos..." data-shop-search>
                 <?php if ($category !== ''): ?>
                     <input type="hidden" name="categoria" value="<?= e($category) ?>">
                 <?php endif; ?>
@@ -34,7 +34,7 @@ renderHeader('Loja', $settings, 'loja');
                     <input type="hidden" name="q" value="<?= e($search) ?>">
                 <?php endif; ?>
                 <label for="shop-category-select">Categoria</label>
-                <select id="shop-category-select" name="categoria" onchange="this.form.submit()">
+                <select id="shop-category-select" name="categoria" data-shop-category onchange="this.form.submit()">
                     <option value="">Todas as categorias</option>
                     <?php foreach ($categories as $cat): ?>
                         <option value="<?= e($cat) ?>" <?= $cat === $category ? 'selected' : '' ?>><?= e($cat) ?></option>
@@ -54,5 +54,9 @@ renderHeader('Loja', $settings, 'loja');
         <?php endif; ?>
     </div>
 </section>
+
+<?php if (getenv('STATIC_BUILD') === '1'): ?>
+<script src="<?= assetUrl('assets/js/shop.js') ?>"></script>
+<?php endif; ?>
 
 <?php renderFooter($settings); ?>
