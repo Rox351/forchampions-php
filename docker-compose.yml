@@ -1,0 +1,59 @@
+services:
+  web:
+    build: .
+    container_name: fc-php-web
+    ports:
+      - "${APP_PORT:-8081}:80"
+    volumes:
+      - .:/var/www/html
+      - ./public/uploads:/var/www/html/public/uploads
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: ${DB_NAME:-forchampions}
+      DB_USER: ${DB_USER:-fc_user}
+      DB_PASS: ${DB_PASS:-fc_pass}
+      DB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpass}
+      APP_URL: ${APP_URL:-http://localhost:8081}
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  db:
+    image: mysql:8.0
+    container_name: fc-php-db
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpass}
+      MYSQL_DATABASE: ${DB_NAME:-forchampions}
+      MYSQL_USER: ${DB_USER:-fc_user}
+      MYSQL_PASSWORD: ${DB_PASS:-fc_pass}
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    ports:
+      - "${DB_PORT:-3308}:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${DB_ROOT_PASSWORD:-rootpass}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+  extract:
+    profiles:
+      - tools
+    build: .
+    container_name: fc-php-extract
+    volumes:
+      - .:/var/www/html
+      - ${BACKUP_PATH:-E:/Backup/ForChampions}:/backup:ro
+    environment:
+      WPRESS_FILE: /backup/Site/forchampions-com-br-20250810-181607-qr23s2lcugpe.wpress
+      BACKUP_ROOT: /backup
+    command: php /var/www/html/scripts/extract-wpress-docker.php
+    restart: "no"
+
+volumes:
+  db_data:

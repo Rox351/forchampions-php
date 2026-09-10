@@ -1,0 +1,32 @@
+# Ambiente local
+.env
+.env.*
+!.env.example
+
+# Backup WordPress (contem credenciais e arquivos grandes)
+_extracted_wpress/
+*.wpress
+
+# Scripts de extracao/importacao do backup (uso local apenas)
+scripts/extract-wpress.php
+scripts/extract-wpress-uploads.php
+scripts/extract-wpress-docker.php
+scripts/import-from-backup.php
+scripts/dump-astra-settings.php
+
+# SQL sensivel duplicado
+public/assets/images/data/
+
+# Uploads gerados pelo admin (nao versionar uploads manuais)
+public/uploads/*
+!public/uploads/.gitkeep
+
+# Sistema / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+
+# Docker volumes locais
+db_data/
