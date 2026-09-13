@@ -535,6 +535,72 @@ img {
     color: var(--color-2);
 }
 
+.quantity-pricing {
+    margin-bottom: 1.25rem;
+}
+
+.product-price-label {
+    margin: 0 0 0.25rem;
+    color: var(--color-3);
+    font-size: 0.95rem;
+}
+
+.product-total-estimate {
+    margin: 0.35rem 0 1rem;
+    color: var(--color-2);
+}
+
+.quantity-field {
+    display: grid;
+    gap: 0.35rem;
+    font-weight: 600;
+    color: var(--color-1);
+    margin-bottom: 1rem;
+    max-width: 140px;
+}
+
+.quantity-field input {
+    height: 44px;
+    padding: 0 0.75rem;
+    border: 1px solid var(--color-7);
+    font: inherit;
+    background: var(--color-7);
+    color: var(--color-1);
+}
+
+.quantity-tiers-wrap {
+    margin-bottom: 1rem;
+}
+
+.quantity-tiers-title {
+    margin: 0 0 0.5rem;
+    font-weight: 700;
+    color: var(--color-1);
+}
+
+.quantity-tiers-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.quantity-tiers-table th,
+.quantity-tiers-table td {
+    border: 1px solid var(--color-7);
+    padding: 0.55rem 0.75rem;
+    text-align: left;
+}
+
+.quantity-tiers-table th {
+    background: var(--color-7);
+    color: var(--color-1);
+}
+
+.quantity-tiers-table tr.is-active td {
+    background: rgba(192, 0, 0, 0.08);
+    font-weight: 700;
+}
+
 .shop-filters {
     display: flex;
     flex-wrap: wrap;
