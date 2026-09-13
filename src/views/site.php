@@ -41,7 +41,7 @@ function renderHeader(string $title, array $settings, string $active = ''): void
 <?php
 }
 
-function renderFooter(array $settings): void
+function renderFooter(array $settings, array $extraScripts = []): void
 {
     $whatsapp = $settings['whatsapp'] ?? '(51) 99188-6097';
     $email = $settings['email'] ?? 'contato@forchampions.com.br';
@@ -85,6 +85,9 @@ function renderFooter(array $settings): void
 </a>
 <button type="button" class="scroll-top" data-scroll-top aria-label="Voltar ao topo">↑</button>
 <script src="<?= assetUrl('assets/js/main.js') ?>"></script>
+<?php foreach ($extraScripts as $scriptPath): ?>
+<script src="<?= assetUrl($scriptPath) ?>"></script>
+<?php endforeach; ?>
 </body>
 </html>
 <?php

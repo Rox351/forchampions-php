@@ -11,6 +11,8 @@ define('SRC_PATH', ROOT_PATH . '/src');
 require_once SRC_PATH . '/config.php';
 require_once SRC_PATH . '/db.php';
 require_once SRC_PATH . '/helpers.php';
+require_once SRC_PATH . '/quantity-pricing.php';
+require_once SRC_PATH . '/wcdpd-import.php';
 require_once SRC_PATH . '/auth.php';
 require_once SRC_PATH . '/views/site.php';
 require_once SRC_PATH . '/views/admin.php';

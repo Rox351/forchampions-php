@@ -109,6 +109,7 @@ function collectAssetPaths(array $products, array $pages): array
         'assets/css/style.css',
         'assets/js/main.js',
         'assets/js/shop.js',
+        'assets/js/product-quantity.js',
         'assets/images/branding/logo.svg',
         'assets/images/branding/placeholder-product.svg',
     ];

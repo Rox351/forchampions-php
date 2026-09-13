@@ -36,7 +36,69 @@
         <div class="product-detail-content">
             <span class="product-category">Kits para jogos</span>
             <h1>Kit Champions Plus size (camiseta+calção)</h1>
-            <p class="product-price large">R$ 145,00</p>
+                        <div
+                class="quantity-pricing"
+                data-quantity-pricing
+                data-product-name="Kit Champions Plus size (camiseta+calção)"
+                data-whatsapp-phone="(51) 99188-6097"
+                data-base-price="145.00"
+                data-tiers="[{&quot;qty_min&quot;:6,&quot;qty_max&quot;:29,&quot;unit_price&quot;:135},{&quot;qty_min&quot;:30,&quot;qty_max&quot;:null,&quot;unit_price&quot;:125}]"
+            >
+                <p class="product-price-label">Preço unitário (conforme quantidade)</p>
+                <p class="product-price large">
+                    <span data-unit-price-display>R$ 145,00</span>
+                </p>
+                <p class="product-total-estimate">
+                    Total estimado: <strong data-total-price-display>R$ 145,00</strong>
+                </p>
+
+                <label class="quantity-field" for="product-qty">
+                    Quantidade
+                    <input id="product-qty" type="number" min="1" step="1" value="1" data-quantity-input>
+                </label>
+
+                <div class="quantity-tiers-wrap">
+                    <p class="quantity-tiers-title">Desconto por quantidade</p>
+                    <table class="quantity-tiers-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Quantidade</th>
+                                <th scope="col">Preço unitário</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                                                                    <tr
+                                data-tier-row
+                                data-qty-min="6"
+                                data-qty-max="29"
+                            >
+                                <td>6 a 29 un.</td>
+                                <td>R$ 135,00</td>
+                            </tr>
+                                                                                    <tr
+                                data-tier-row
+                                data-qty-min="30"
+                                data-qty-max=""
+                            >
+                                <td>30+ un.</td>
+                                <td>R$ 125,00</td>
+                            </tr>
+                                                    </tbody>
+                    </table>
+                </div>
+
+                <div class="product-actions stacked">
+                    <a
+                        href="https://wa.me/5551991886097?text=Ol%C3%A1%21%20Vim%20pelo%20site%20For%20Champions%20e%20gostaria%20de%20comprar%3A%0A%0A%2AKit%20Champions%20Plus%20size%20%28camiseta%2Bcal%C3%A7%C3%A3o%29%2A%0AQuantidade%3A%201%0APre%C3%A7o%20unit%C3%A1rio%3A%20R%24%20145%2C00%0ATotal%20estimado%3A%20R%24%20145%2C00%0A%0APode%20me%20ajudar%20com%20tamanho%20e%20personaliza%C3%A7%C3%A3o%3F"
+                        class="btn btn-primary"
+                        target="_blank"
+                        rel="noopener"
+                        data-product-wa-button
+                    >Comprar no WhatsApp</a>
+                    <a href="https://rox351.github.io/forchampions-php/loja.html" class="btn btn-outline">Voltar para a loja</a>
+                </div>
+            </div>
+            
             <div class="product-description">Sublimação total, sem restrição de arte ou cores.<br />
 <br />
 ESCUDO 3D COM TEXTURA<br />
@@ -83,11 +145,7 @@ Opções de golas:<br />
 – Polo V<br />
 <br />
 – Polo com botão</div>
-            <div class="product-actions stacked">
-                <a href="https://wa.me/5551991886097?text=Ol%C3%A1%21%20Vim%20pelo%20site%20For%20Champions%20e%20gostaria%20de%20comprar%3A%0A%0A%2AKit%20Champions%20Plus%20size%20%28camiseta%2Bcal%C3%A7%C3%A3o%29%2A%0APre%C3%A7o%3A%20R%24%20145%2C00%0A%0APode%20me%20ajudar%20com%20tamanho%20e%20personaliza%C3%A7%C3%A3o%3F" class="btn btn-primary" target="_blank" rel="noopener">Comprar no WhatsApp</a>
-                <a href="https://rox351.github.io/forchampions-php/loja.html" class="btn btn-outline">Voltar para a loja</a>
-            </div>
-        </div>
+                    </div>
     </div>
 </section>
 
@@ -123,5 +181,6 @@ Opções de golas:<br />
 </a>
 <button type="button" class="scroll-top" data-scroll-top aria-label="Voltar ao topo">↑</button>
 <script src="https://rox351.github.io/forchampions-php/assets/js/main.js"></script>
+<script src="https://rox351.github.io/forchampions-php/assets/js/product-quantity.js"></script>
 </body>
 </html>

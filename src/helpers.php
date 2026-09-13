@@ -83,15 +83,19 @@ function normalizePhoneWhatsApp(string $phone): string
     return $digits;
 }
 
-function whatsappLink(array $product, array $settings): string
+function whatsappLink(array $product, array $settings, int $quantity = 1): string
 {
     $phone = normalizePhoneWhatsApp($settings['whatsapp'] ?? '51991886097');
-    $price = (float) ($product['preco'] ?? 0);
+    $quantity = max(1, $quantity);
+    $unitPrice = resolveUnitPriceForQuantity($product, $quantity);
+    $basePrice = (float) ($product['preco'] ?? 0);
 
-    if ($price > 0) {
+    if ($basePrice > 0 || $unitPrice > 0) {
         $message = "Olá! Vim pelo site For Champions e gostaria de comprar:\n\n"
             . '*' . $product['nome'] . "*\n"
-            . 'Preço: ' . formatPrice($price) . "\n\n"
+            . 'Quantidade: ' . $quantity . "\n"
+            . 'Preço unitário: ' . formatPrice($unitPrice) . "\n"
+            . 'Total estimado: ' . formatPrice($unitPrice * $quantity) . "\n\n"
             . 'Pode me ajudar com tamanho e personalização?';
     } else {
         $message = 'Olá! Vim pelo site For Champions e gostaria de conhecer os produtos e fazer um pedido personalizado.';
